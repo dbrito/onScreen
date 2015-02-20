@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="onScreen.js"></script>
+	<script type="text/javascript" src="jquery.js"></script>
+	<style type="text/css">
+		*{
+			margin:0px; padding: 0px;
+			box-sizing: border-box;
+			font-family: arial; color:#FFF;
+		}
+
+		#parallax {
+			width: 200px;
+			height: 200px;
+			background: #F00;
+			margin: 0 auto;	
+			transform: scaleX(3);
+			transition: all 1s;
+			opacity: 0;
+		}
+
+	</style>
+</head>
+<body>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<div id="parallax"></div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<script type="text/javascript">
+		var teste = document.getElementById('parallax');
+		teste.onScreen(function(target) {
+			target.style.opacity = '1';	
+		});
+		teste.outScreen(function(target){
+			target.style.opacity = '0';			
+		});
+		teste.initCheck();
+	</script>
+</body>
+</html>
