@@ -10,35 +10,58 @@
 			margin:0px; padding: 0px;
 			box-sizing: border-box;
 			font-family: arial; color:#000;
-		}
-		#parallax {
-			width: 200px;
-			height: 200px;
-			background: #F00;
-			margin: 0 auto;	
-			transform: scaleX(3);
-			transition: all 1s;
-			opacity: 1;
+			transition:all 1s;
+			-web-kit-transition:all 1s;
+			-moz-transition:all 1s;
+			-o-transition:all 1s;
 		}
 		
+		#divcomid {
+			width: 500px; height: 500px;
+			background: #F00;
+			opacity: 0px;
+		}
+
+		.divcomclasse {
+			width: 400px; height: 200px;
+			background: #F00;
+			border: 1px solid #000;
+			opacity: .4;
+		}
 	</style>
 </head>
 <body>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<div id="parallax"></div>
-	<div class="teste">Teste1</div>
-	<div class="teste">Teste2</div>
-	<div class="teste">Teste3</div>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<div id="divcomid"></div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<div class="divcomclasse">Teste1</div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<div class="divcomclasse">Teste1</div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 	<script type="text/javascript">
-		var teste = document.getElementsByClassName('teste');
-		teste.onScreen(function(target) {
-			target.style.border = '1px solid #000';	
+		//FAZENDO A BUSCA POR CLASSE
+		var testeClasse = document.getElementsByClassName('divcomclasse');
+		testeClasse.onScreen(function(target) {
+			target.style.border = '30px solid #000';	
+			target.style.opacity = '1';	
 		});
-		teste.outScreen(function(target){
+		testeClasse.outScreen(function(target){
 			target.style.border = '0px solid #000';	
+			target.style.opacity = '.4';	
 		});
-		teste.initCheck();
+		testeClasse.initCheck();
+
+		//FAZENDO A BUSCA POR ID
+		var testeid = document.getElementById('divcomid');
+		testeid.onScreen(function(target) {
+			target.style.opacity = '1';
+		});
+		testeid.outScreen(function(target){
+			target.style.opacity = '0';
+		});
+		testeid.initCheck();
 	</script>
 </body>
 </html>

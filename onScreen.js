@@ -29,36 +29,38 @@ Object.prototype.initCheck = function(){
 	} else {
 		list.push(this);
 	}
-	window.onscroll = check;
-	window.onpageshow = check;
 
-	function check() {
-		for (var i=0; i < list.length; i++) {
-			var obj = list[i];
-			var top = obj.offsetTop;
-			var altura = obj.offsetHeight;
-			var scrollPosY = window.scrollY;
-			var alturaTela = window.innerHeight;
-			var left = obj.offsetLeft;
-			var largura = obj.offsetWidth;
-			var scrollPosX = window.scrollX;
-			var larguraTela = window.innerWidth;
+	window.addEventListener('scroll', getCheckFunction(list));
+	window.addEventListener('pageshow', getCheckFunction(list));
 
-			var vertical = ( scrollPosY <= ( top + altura ) && ( scrollPosY + alturaTela ) >= top );
-			var horizontal = ( scrollPosX <= ( left + largura ) && ( scrollPosX + larguraTela ) >= left );
+	function getCheckFunction( lista ){
+		return function() {
+			for (var i=0; i < lista.length; i++) {
+				var obj = lista[i];
+				var top = obj.offsetTop;
+				var altura = obj.offsetHeight;
+				var scrollPosY = window.scrollY;
+				var alturaTela = window.innerHeight;
+				var left = obj.offsetLeft;
+				var largura = obj.offsetWidth;
+				var scrollPosX = window.scrollX;
+				var larguraTela = window.innerWidth;
 
-			if ( vertical && horizontal ) {
-				if ( obj.isOnScreen == undefined || obj.isOnScreen == false ) {
-					obj.isOnScreen = true;
-					console.log('here');
-					obj.callbackOn(obj);
+				var vertical = ( scrollPosY <= ( top + altura ) && ( scrollPosY + alturaTela ) >= top );
+				var horizontal = ( scrollPosX <= ( left + largura ) && ( scrollPosX + larguraTela ) >= left );
+
+				if ( vertical && horizontal ) {
+					if ( obj.isOnScreen == undefined || obj.isOnScreen == false ) {
+						obj.isOnScreen = true;
+						obj.callbackOn(obj);
+					}
+				} else {
+					if ( obj.isOnScreen == undefined || obj.isOnScreen == true ) {
+						obj.isOnScreen = false;	
+						obj.callbackOut(obj);
+					}
 				}
-			} else {
-				if ( obj.isOnScreen == undefined || obj.isOnScreen == true ) {
-					obj.isOnScreen = false;	
-					obj.callbackOut(obj);
-				}
-			}
+			}		
 		}
 	}
 }
