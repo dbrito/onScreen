@@ -3,12 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="onScreen.js"></script>
 	<style type="text/css">
 		* {
 			margin:0px; padding: 0px;
 			box-sizing: border-box;
-			font-family: arial; color:#FFF;
+			font-family: arial; color:#000;
 		}
 		#parallax {
 			width: 200px;
@@ -17,22 +18,25 @@
 			margin: 0 auto;	
 			transform: scaleX(3);
 			transition: all 1s;
-			opacity: 0;
+			opacity: 1;
 		}
-
+		
 	</style>
 </head>
 <body>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<div id="parallax"></div>
+	<div class="teste">Teste1</div>
+	<div class="teste">Teste2</div>
+	<div class="teste">Teste3</div>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<script type="text/javascript">
-		var teste = document.getElementById('parallax');
+		var teste = document.getElementsByClassName('teste');
 		teste.onScreen(function(target) {
-			target.style.opacity = '1';	
+			target.style.border = '1px solid #000';	
 		});
 		teste.outScreen(function(target){
-			target.style.opacity = '0';			
+			target.style.border = '0px solid #000';	
 		});
 		teste.initCheck();
 	</script>
