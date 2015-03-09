@@ -10,7 +10,7 @@ Object.prototype.onScreen = function(callback){
 }
 
 Object.prototype.outScreen = function(callback){
-	if ((this.nodeType != 1 && this.constructor.name != 'HTMLCollection') || (this.nodeType != 1 && this.constructor.name != 'HTMLCollection')) return;
+	if ((this.nodeType != 1 && this.constructor.name != 'HTMLCollection')) return;
 	if (this.constructor.name == 'HTMLCollection') {
 		for ( var i=0; i < this.length; i++ ) {
 			this[i].callbackOut = callback;
@@ -22,7 +22,7 @@ Object.prototype.outScreen = function(callback){
 
 Object.prototype.initCheck = function(){
 	var list = new Array();
-	if ((this.nodeType != 1 && this.constructor.name != 'HTMLCollection') || (this.nodeType != 1 && this.constructor.name != 'HTMLCollection')) return;
+	if ((this.nodeType != 1 && this.constructor.name != 'HTMLCollection')) return;
 	if (this.constructor.name == 'HTMLCollection') {
 		list = this;
 		console.log(this);
@@ -32,6 +32,7 @@ Object.prototype.initCheck = function(){
 
 	window.addEventListener('scroll', getCheckFunction(list));
 	window.addEventListener('pageshow', getCheckFunction(list));
+	window.addEventListener('resize', getCheckFunction(list));
 
 	function getCheckFunction( lista ){
 		return function() {

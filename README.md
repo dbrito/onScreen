@@ -6,20 +6,22 @@ Para que o elemento passe a ser verificado se deve primeiramente adiconar os lis
 
 ###Ex:
 ```javascript
-//Seleciona o elemento
-var teste = document.getElementById('parallax');
+//Seleciona o(s) elemento(s)
+var testeClasse = document.getElementsByClassName('divcomclasse');
 //Adiciona os listeners
-teste.onScreen(function(target) {
+testeClasse.onScreen(function(target) {
+	target.style.border = '30px solid #000';	
 	target.style.opacity = '1';	
 });
-teste.outScreen(function(target){
-	target.style.opacity = '0';			
+testeClasse.outScreen(function(target){
+	target.style.border = '0px solid #000';	
+	target.style.opacity = '.4';	
 });
 //Ativa a função
-teste.initCheck();
+testeClasse.initCheck();
 ```
 
 ***Importante:***
-Momentaneamente o plugin só da suporte a elementos unicos e sem o uso de JQuery.
+Momentaneamente o plugin só da suporte a elementos selecionados via javascript puro ou seja sem o uso de JQuery(momentaneamente).
 
 [por Douglas Santos](http://douglas.com.br)
